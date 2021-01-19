@@ -40,4 +40,5 @@ int main()
     printf("调用test_call前： x=%d\n", x);
     test_call(x);
     printf("调用test_call后： x=%d\n", x);
+    printf("int长度：%d\n",sizeof(int));
 }
