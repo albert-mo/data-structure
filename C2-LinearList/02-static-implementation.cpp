@@ -68,6 +68,8 @@ int GetElem(SqList L, int i)
 最好时间复杂度=O(1)
 平均时间复杂度=O(1/2 * n)
 最坏时间复杂度=O(n)
+结构体不能直接使用==比较，需要依次比对各个分量来判断两个结构体是否相等
+定义一个函数，重载更好
  */
 int LocateElem(SqList L, int e)
 {

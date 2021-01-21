@@ -45,8 +45,55 @@ void IncreaseSize(SeqList &L, int len)
 /* 按位查找
 时间复杂度=O(1)
  */
-int GetElem(SqList L, int i)
+int GetElem(SeqList L, int i)
 {
+    return L.data[i - 1];
+}
+
+/* 插入元素
+最好时间复杂度=O(1)
+平均时间复杂度=O(1/2 * n)
+最坏时间复杂度=O(n)
+ */
+bool ListInsert(SeqList &L, int i, int e)
+{
+    if (i < 1 || i > L.length + 1) //判断i的范围是否有效
+        return false;
+    if (L.length >= MaxSize) //当前存储空间已满，不能插入
+        return false;
+    for (int j = L.length; j >= i; j--) //将第i个元素及之后的元素后移
+    {
+        L.data[j] = L.data[j - 1];
+    }
+    L.data[i - 1] = e;
+    L.length++;
+    return true;
+}
+
+/* 删除元素 
+最好时间复杂度=O(1)
+平均时间复杂度=O(1/2 * n)
+最坏时间复杂度=O(n)
+*/
+bool ListDelete(SeqList &L, int i, int &e)
+{
+    if (i < 1 || i > L.length)
+        return false;
+    e = L.data[i - 1];
+    for (int j = i; j < L.length; j++)
+        L.data[j - 1] = L.data[j];
+    L.length--;
+    return true;
+}
+
+/* 按位查找
+时间复杂度=O(1)
+ */
+int GetElem(SeqList L, int i)
+{
+
+    if (i < 1 || i > L.length)
+        return -1;
     return L.data[i - 1];
 }
 
@@ -56,7 +103,7 @@ int GetElem(SqList L, int i)
 平均时间复杂度=O(1/2 * n)
 最坏时间复杂度=O(n)
  */
-int LocateElem(SqList L, int e)
+int LocateElem(SeqList L, int e)
 {
     for (int i = 0; i < L.length; i++)
         if (L.data[i] == e)
