@@ -42,6 +42,14 @@ void IncreaseSize(SeqList &L, int len)
     free(p);
 }
 
+/* 按位查找
+时间复杂度=O(1)
+ */
+int GetElem(SqList L, int i)
+{
+    return L.data[i - 1];
+}
+
 int main()
 {
     SeqList L;
