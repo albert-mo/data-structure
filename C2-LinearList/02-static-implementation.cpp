@@ -57,7 +57,24 @@ bool ListDelete(SqList &L, int i, int &e)
  */
 int GetElem(SqList L, int i)
 {
+
+    if (i < 1 || i > L.length)
+        return -1;
     return L.data[i - 1];
+}
+
+/* 按值查找
+在顺序表L中查找第一个元素值等于e的元素，并返回其位序
+最好时间复杂度=O(1)
+平均时间复杂度=O(1/2 * n)
+最坏时间复杂度=O(n)
+ */
+int LocateElem(SqList L, int e)
+{
+    for (int i = 0; i < L.length; i++)
+        if (L.data[i] == e)
+            return i + 1;
+    return 0;
 }
 
 int main()
