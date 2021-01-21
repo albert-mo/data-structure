@@ -49,8 +49,8 @@ bool ListInsert(LinkList &L, int i, int e)
         return false;
     LNode *s = (LNode *)malloc(sizeof(LNode));
     s->data = e;
-    s->next = p->next;
-    p->next = s;
+    s->next = p->next;  //先将当前指针p.next设为s.next
+    p->next = s;    //再将s设为p.next
     return true; //插入成功
 }
 
