@@ -24,10 +24,37 @@ bool Empty(LinkList L)
     return (L->next == NULL);
 }
 
+/* 在第i个位置插入元素e(带头节点)
+最好时间复杂度=O(1)
+平均时间复杂度=O(1/2 * n)
+最坏时间复杂度=O(n) */
+bool ListInsert(LinkList &L, int i, int e)
+{
+    if (i < 1)
+        return false;
+
+    LNode *p;                      //指针p指向当前扫描到的节点
+    int j = 0;                     //当前p指向的是第几个节点
+    p = L;                         //L指向头节点，头节点是0个节点（不存放数据）
+    while (p != NULL && j < i - 1) //循环找到第i-1个节点
+    {
+        p = p->next;
+        j++;
+    }
+    if (p == NULL)
+        return false;
+    LNode *s = (LNode *)malloc(sizeof(LNode));
+    s->data = e;
+    s->next = p->next;
+    p->next = s; //将节点s连到p之后
+    return true; //插入成功
+}
+
+// 测试初始化
 void test()
 {
-    LinkList L;
-    InitList(L);
+    LinkList L;  //声明一个指向单链表的指针
+    InitList(L); //初始化一个单链表
 }
 
 int main()

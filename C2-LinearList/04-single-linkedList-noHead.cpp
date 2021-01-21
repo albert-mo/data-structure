@@ -21,6 +21,39 @@ bool Empty(LinkList L)
     return (L == NULL);
 }
 
+/* 在第i个位置插入元素e(不带头节点)
+最好时间复杂度=O(1)
+平均时间复杂度=O(1/2 * n)
+最坏时间复杂度=O(n) */
+bool ListInsert(LinkList &L, int i, int e)
+{
+    if (i < 1)
+        return false;
+    if (i == = 1)
+    {
+        LNode *s = (LNode *)malloc(sizeof(LNode));
+        s->data = e;
+        s->next = L;
+        L = s;
+        return true;
+    }
+    LNode *p;  //指针p指向当前扫描到的节点
+    int j = 1; //当前p指向的是第几个节点
+    p = L;     //p指向第一个节点（注意：不是头节点）
+    while (p != NULL && j < i - 1)
+    {
+        p = p->next;
+        j++ ；
+    }
+    if (p == NULL) //i值不合法
+        return false;
+    LNode *s = (LNode *)malloc(sizeof(LNode));
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+    return true; //插入成功
+}
+
 void test()
 {
     LinkList L;
