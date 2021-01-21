@@ -42,14 +42,6 @@ void IncreaseSize(SeqList &L, int len)
     free(p);
 }
 
-/* 按位查找
-时间复杂度=O(1)
- */
-int GetElem(SeqList L, int i)
-{
-    return L.data[i - 1];
-}
-
 /* 插入元素
 最好时间复杂度=O(1)
 平均时间复杂度=O(1/2 * n)
@@ -59,7 +51,7 @@ bool ListInsert(SeqList &L, int i, int e)
 {
     if (i < 1 || i > L.length + 1) //判断i的范围是否有效
         return false;
-    if (L.length >= MaxSize) //当前存储空间已满，不能插入
+    if (L.length >= L.MaxSize) //当前存储空间已满，不能插入
         return false;
     for (int j = L.length; j >= i; j--) //将第i个元素及之后的元素后移
     {
@@ -115,8 +107,21 @@ int main()
 {
     SeqList L;
     InitList(L);
-    //...往顺序表插入几个元素
+
     IncreaseSize(L, 5);
     printf("length of L:%d\n", L.MaxSize);
+
+    //...往顺序表插入几个元素
+    for (int i = 0; i < 5; i++)
+    {
+        ListInsert(L, 1, i);
+    }
+
+    int e = -1;
+    if (ListDelete(L, 3, e))
+        printf("已删除第三个元素，删除元素值为=%d\n", e);
+    else
+        printf("位序i不合法，删除失败\n");
+
     return 0;
 }
