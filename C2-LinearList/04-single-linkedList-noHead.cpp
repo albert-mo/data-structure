@@ -29,7 +29,7 @@ bool ListInsert(LinkList &L, int i, int e)
 {
     if (i < 1)
         return false;
-    if (i == = 1)
+    if (i == 1)
     {
         LNode *s = (LNode *)malloc(sizeof(LNode));
         s->data = e;
@@ -43,7 +43,7 @@ bool ListInsert(LinkList &L, int i, int e)
     while (p != NULL && j < i - 1)
     {
         p = p->next;
-        j++ ；
+        j++;
     }
     if (p == NULL) //i值不合法
         return false;
@@ -60,7 +60,7 @@ bool insertNextNode(LNode *p, int e)
 {
     if (p == NULL)
         return false;
-    LNode *s = (LNode)malloc(sizeof(LNode));
+    LNode *s = (LNode *)malloc(sizeof(LNode));
     if (s == NULL) //内存分配失败
         return false;
     s->data = e; //用节点s保存数据元素e
@@ -76,7 +76,7 @@ bool insertPriorNode(LNode *p, int e)
 {
     if (p == NULL)
         return false;
-    LNode *s = (LNode)malloc(sizeof(LNode));
+    LNode *s = (LNode *)malloc(sizeof(LNode));
     if (s == NULL) //内存分配失败
         return false;
     s->next = p->next;
