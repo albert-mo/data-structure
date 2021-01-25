@@ -143,6 +143,34 @@ LNode *GetElem(LinkList L, int i)
     return p; //如果i大于单链表长度，返回NULL
 }
 
+/* 按值查找，找到元素域==e的节点
+时间复杂度=O(n)
+ */
+LNode *LocateElem(LinkList L, int e)
+{
+    LNode *p = L->next;
+    //从第1个节点开始查找数据域为e的节点
+    while (p != NULL && p->data != e)
+    {
+        p = p->next;
+    }
+    return p; //找到后返回该指针，否则返回NULL
+}
+
+/* 求表的长度
+时间复杂度=O(n) */
+int Length(LinkList L)
+{
+    int len = 0; //统计表长
+    LNode *p = L;
+    while (p != NULL)
+    {
+        p = p->next;
+        len++;
+    }
+    return len;
+}
+
 // 测试初始化
 void test()
 {
