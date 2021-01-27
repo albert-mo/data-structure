@@ -14,7 +14,7 @@ bool InitList(LinkList &L)
     L = (LNode *)malloc(sizeof(LNode)); //分配一个头结点
     if (L == NULL)                      //内存不足，分配失败
         return false;
-    L->next == L; //头结点指针指向头结点
+    L->next == L; //头结点指针指向头结点 从尾部找到头结点，时间复杂度=O(1)
     return true;
 }
 
