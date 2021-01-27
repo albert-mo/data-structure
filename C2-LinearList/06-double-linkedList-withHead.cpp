@@ -46,6 +46,42 @@ bool DeleteNextDNode(DNode *p)
     return true;
 }
 
+//双链表的删除
+void DestroyList(DLinkList &L)
+{
+    //循环释放各个数据结点
+    while (L->next != NULL)
+    {
+        DeleteNextDNode(L);
+    }
+    free(L);   //释放头结点
+    L == NULL; //头指针指向NULL
+}
+
+//双链表的遍历-后向遍历
+//时间复杂度=O(n)
+void BackwardTraverse(DNode *p)
+{
+    while (p != NULL)
+    {
+        //对结点p进行相应处理，如打印
+        p = p->next;
+    }
+}
+
+//双链表的遍历-前向遍历
+//时间复杂度=O(n)
+void ForwardTraverse(DNode *p)
+{
+    //跳过头结点
+    // while (p->next != NULL)
+    while (p != NULL)
+    {
+        //对结点p进行相应处理，如打印
+        p = p->prior;
+    }
+}
+
 void testDLinkList()
 {
     //初始化双链表
