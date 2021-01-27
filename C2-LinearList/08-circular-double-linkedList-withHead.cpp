@@ -14,9 +14,21 @@ bool InitDLinkList(DLinkList &L)
     L = (DNode *)malloc(sizeof(DNode)); //分配一个头结点
     if (L == NULL)                      //内存不足，分配失败
         return false;
-    L->prior = NULL; //头结点的prior永远指向NULL
-    L->next = NULL;  //头结点之后暂时还没有节点
+    L->prior = L; //头结点的prior永远指向NULL
+    L->next = L;  //头结点之后暂时还没有节点
     return true;
+}
+
+//判断循环双链表是否为空
+bool Empty(DLinkList L)
+{
+    return (L->next == L);
+}
+
+// 判断结点p是否是循环双链表的表尾结点
+bool isTail(DLinkList L, DNode *p)
+{
+    return (p->next == L);
 }
 
 //在p结点之后插入s节点
@@ -24,9 +36,8 @@ bool InsertNextDNode(DNode *p, DNode *s)
 {
     if (p == NULL || s == NULL) //非法参数
         return false;
-    s->next = p->next;      //将结点*s插入到结点p之后
-    if (p->next != NULL)    //p没有后继结点即不需要设置其前驱结点
-        p->next->prior = s; //将p后继节点的前驱节点设置为s
+    s->next = p->next;  //将结点*s插入到结点p之后
+    p->next->prior = s; //将p后继节点的前驱节点设置为s
     s->prior = p;
     p->next = s;
     return true;
@@ -38,12 +49,9 @@ bool DeleteNextDNode(DNode *p)
     if (p == NULL)
         return false;
     DNode *q = p->next; //找到p的后继结点q
-    if (q == NULL)      //p没有后继
-        return false;
     p->next = q->next;
-    if (q->next != NULL)
-        q->next->prior = p;
-    free(q); //释放结点空间
+    q->next->prior = p; //如果p是尾结点，即将头结点的前驱结点指向尾结点
+    free(q);            //释放结点空间
     return true;
 }
 
@@ -51,6 +59,8 @@ bool DeleteNextDNode(DNode *p)
 void DestroyList(DLinkList &L)
 {
     //循环释放各个数据结点
+    DNode *p = (DNode *)malloc(sizeof(DNode));
+    p = L->next->prior;
     while (L->next != NULL)
     {
         DeleteNextDNode(L);
