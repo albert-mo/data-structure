@@ -29,7 +29,6 @@ bool InsertNextDNode(DNode *p, DNode *s)
         p->next->prior = s; //将p后继节点的前驱节点设置为s
     s->prior = p;
     p->next = s;
-    return true;
 }
 
 // 删除p结点之后的结点
