@@ -31,7 +31,7 @@ bool ListInsert(SqList &L, int i, int e)
     {
         L.data[j] = L.data[j - 1];
     }
-    L.data[i - 1] = e;
+    L.data[i - 1] = e; //将第i个位置的元素赋值
     L.length++;
     return true;
 }
