@@ -25,6 +25,7 @@ void test(int x)
     printf("test函数内部 x=%d\n", x);
 }
 
+// 对参数的修改结果需要“带回来”
 void test_call(int &x)
 {
     x = 1024;
@@ -40,5 +41,5 @@ int main()
     printf("调用test_call前： x=%d\n", x);
     test_call(x);
     printf("调用test_call后： x=%d\n", x);
-    printf("int长度：%d\n",sizeof(int));
+    printf("int长度：%d\n", sizeof(int));
 }

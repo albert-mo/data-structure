@@ -36,7 +36,7 @@ bool ListInsert(SqList &L, int i, int e)
     return true;
 }
 
-/* 删除元素 
+/* 删除元素
 最好时间复杂度=O(1)
 平均时间复杂度=O(1/2 * n)
 最坏时间复杂度=O(n)
