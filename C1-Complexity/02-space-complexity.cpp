@@ -12,6 +12,11 @@ void loveYou(int n)
     printf("I love you more than %d \n", n); //1
 }
 
+void test()
+{
+    printf("I love you more than %d \n", 100); //1
+}
+
 void loveYouRecursion(int n)
 {
     int a, b, c;
@@ -26,6 +31,7 @@ int main()
 {
     // loveYou(3000);
     loveYouRecursion(5);
+    test();
 }
 
 // S(n) = o(1) 算法原地工作--算法所需内存空间为常量

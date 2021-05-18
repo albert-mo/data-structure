@@ -202,7 +202,7 @@ LinkList List_TailInsert(LinkList &L)
 
 /* 头插法建立循环单链表
 时间复杂度=O(n) */
-LinkList LIst_HeadInsert(LinkList &L) //逆向建立循环单链表
+LinkList List_HeadInsert(LinkList &L) //逆向建立循环单链表
 {
     LNode *s;
     int x;

@@ -86,7 +86,7 @@ bool insertPriorNode(LNode *p, int e)
     return true;
 }
 
-/* 按位序删除，带头节点
+/* 按位序删除，不带头节点
 最坏时间复杂度=O(n)
 平均时间复杂度=O(n)
 最好时间复杂度=O(1)
@@ -96,8 +96,8 @@ bool ListDelete(LinkList &L, int i, int &e)
     if (i < 1)
         return false;
     LNode *p;                      //指针p指向当前扫描到的节点
-    int j = 0;                     //当前p指向的是第几个节点
-    p = L;                         //L指向头节点，头节点是第0个节点（不存数据）
+    int j = 1;                     //当前p指向的是第几个节点
+    p = L;                         //L指向头节点，头节点是第1个节点（存数据）
     while (p != NULL && j < i - 1) //循环找到第i-1个节点
     {
         p = p->next;
